@@ -1,50 +1,80 @@
-# React + TypeScript + Vite
+# The Wild Oasis
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Wild Oasis is a React-based project designed to provide a seamless and engaging user experience. This project showcases modern web development practices and aims to deliver a high-quality application.
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The Wild Oasis is a platform that combines cutting-edge technology with intuitive design to create an immersive experience for users. Whether you're exploring its features or contributing to its development, this project emphasizes simplicity, scalability, and performance.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Built with React
+- Responsive design
+- Modular and reusable components
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Follow the instructions below to set up and run the project locally.
+
+### Prerequisites
+
+Ensure you have the following installed on your system:
+
+- Node.js (LTS version recommended)
+- npm or yarn (package manager)
+
+### Installation
+
+- Clone the repository:
+
+```bash
+git clone https://github.com/alvaromontans/wild-oasis-test
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. Navigate to the project directory:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+cd the-wild-oasis
 ```
+
+- Install dependencies:
+
+```bash
+npm install
+```
+
+or
+
+```bash
+yarn install
+```
+
+### Running the Application
+
+1. Start the development server:
+
+```bash
+npm run dev
+```
+
+or
+
+```bash
+yarn start
+```
+
+### Building for Production
+
+To create a production build, run:
+
+```bash
+npm run build
+```
+
+or
+
+```bash
+yarn build
+```
+
+The optimized build will be available in the `dist` directory.
