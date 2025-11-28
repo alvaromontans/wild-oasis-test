@@ -33,3 +33,65 @@ export const formatCurrency = (value: number) =>
   new Intl.NumberFormat('es', { style: 'currency', currency: 'EUR' }).format(
     value
   );
+
+export function translateSupabaseError(message: string) {
+  if (message.includes("email_address_invalid"))
+    return "El correo electrónico no es válido.";
+
+  if (message.includes("invalid_email"))
+    return "Debes introducir un correo electrónico válido.";
+
+  if (message.includes("password_too_short"))
+    return "La contraseña es demasiado corta.";
+
+  if (message.includes("weak_password"))
+    return "La contraseña es demasiado débil.";
+
+  if (message.includes("user_already_exists"))
+    return "Ya existe una cuenta con este correo electrónico.";
+
+  if (message.includes("invalid_credentials"))
+    return "Correo o contraseña incorrectos.";
+
+  if (message.includes("email_required"))
+    return "El correo electrónico es obligatorio.";
+
+  if (message.includes("password_required"))
+    return "La contraseña es obligatoria.";
+
+  // Mensaje por defecto
+  return "Ha ocurrido un error. Inténtalo de nuevo.";
+}
+
+export function getEmailError(email: string) {
+  const trimmed = email.trim();
+
+  // 1. Vacío
+  if (!trimmed) return "El correo está vacío.";
+
+  // 2. Espacios o caracteres raros
+  if (/\s/.test(email)) return "El correo contiene espacios o caracteres no válidos.";
+
+  // 3. Dominio prohibido o de pruebas
+  const dominio = trimmed.split("@")[1];
+  const dominiosBloqueados = [
+    "test.com",
+    "test",
+    "example.com",
+    "example.org",
+    "localhost",
+  ];
+
+  if (dominiosBloqueados.includes(dominio))
+    return `El dominio @${dominio} no es válido porque es un dominio de pruebas.`;
+
+  // 4. Formato email inválido
+  const regexBasico = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!regexBasico.test(trimmed))
+    return "El correo no tiene un formato válido.";
+
+  return null; // válido
+}
+
+

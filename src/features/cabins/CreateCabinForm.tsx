@@ -63,7 +63,7 @@ function CreateCabinForm({
 
   return (
     <Form onSubmit={handleSubmit(onSubmit, onError)} type="modal">
-      <FormRow label="Name" error={formState.errors.name?.message as string}>
+      <FormRow label="Nombre" error={formState.errors.name?.message as string}>
         <Input
           type="text"
           id="name"
@@ -74,7 +74,7 @@ function CreateCabinForm({
       </FormRow>
 
       <FormRow
-        label="Maximum capacity"
+        label="Capacidad máxima"
         error={formState.errors.max_capacity?.message as string}
       >
         <Input
@@ -92,7 +92,7 @@ function CreateCabinForm({
       </FormRow>
 
       <FormRow
-        label="Regular Price"
+        label="Precio"
         error={formState.errors.regular_price?.message as string}
       >
         <Input
@@ -110,7 +110,7 @@ function CreateCabinForm({
       </FormRow>
 
       <FormRow
-        label="Discount"
+        label="Descuento"
         error={formState.errors.discount?.message as string}
       >
         <Input
@@ -128,7 +128,7 @@ function CreateCabinForm({
       </FormRow>
 
       <FormRow
-        label="Description for website"
+        label="Descripción"
         error={formState.errors.description?.message as string}
       >
         <Textarea

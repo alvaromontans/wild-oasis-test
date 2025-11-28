@@ -1,11 +1,18 @@
 import { LoginInterface } from "../interfaces/LoginInterface";
 import { SignupInterface } from "../interfaces/SignupInterface";
+import { getEmailError } from "../utils/helpers";
 import supabase, { supabaseUrl } from "./supabase";
 
 export async function signup({ full_name, email, password }: SignupInterface) {
     if (!full_name || !email || !password) {
         throw new Error("All fields are required");
     }
+
+    const emailError = getEmailError(email);
+    if (emailError) {
+        throw new Error(emailError);
+    }
+
     const { data, error } = await supabase.auth.signUp({
         email, password, options: {
             data: {
@@ -25,6 +32,7 @@ export async function login({ email, password }: LoginInterface) {
         email,
         password
     });
+
 
     if (error) throw new Error(error.message);
 
@@ -68,6 +76,7 @@ export async function updateCurrentUser({ password, full_name, avatar }: UpdateU
 
     if (full_name || avatar) {
         const { data, error } = await supabase.auth.updateUser({ data: updateData.data });
+        console.log({ data, error });
         if (error) throw new Error(error.message);
         if (!avatar) return data;
 

@@ -8,6 +8,9 @@ export function useSignup() {
             mutationFn: signupApi,
             onSuccess: () => {
                 toast.success("Cuenta creada correctamente. A continuación verifica la nueva cuenta con el correo electrónico")
+            },
+            onError: (error: Error) => {
+                toast.error(error.message);
             }
         }
     );
